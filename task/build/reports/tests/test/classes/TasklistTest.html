@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.136s</div>
+<div class="counter">0.178s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">0%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,13 +61,183 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Standard output</a>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="start"></a>
+<h3 class="failures">start</h3>
+<span class="code">
+<pre>java.lang.AssertionError: Wrong answer in test #8
+
+Your output should contain &quot;1  2022-05-12 17:00 N I
+   Cinema: get tickets
+   Check movie reviews
+&quot;
+
+Please find below the output of your program during this failed test.
+Note that the '&gt;' character indicates the beginning of the input line.
+
+---
+
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; H
+Input the date (yyyy-mm-dd):
+&gt; 2022-05-05
+Input the time (hh:mm):
+&gt; 17:00
+Input a new task (enter a blank line to end):
+&gt; See my dentist
+&gt; 
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2022-05-12
+Input the time (hh:mm):
+&gt; 17:00
+Input a new task (enter a blank line to end):
+&gt; Cinema: get tickets
+&gt; Check movie reviews
+&gt; 
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; n
+Input the date (yyyy-mm-dd):
+&gt; 2022-04-28
+Input the time (hh:mm):
+&gt; 19:00
+Input a new task (enter a blank line to end):
+&gt; Supermarket
+&gt; Chocolates
+&gt; flour
+&gt; oranges
+&gt; 
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; l
+Input the date (yyyy-mm-dd):
+&gt; 2022-05-12
+Input the time (hh:mm):
+&gt; 12:00
+Input a new task (enter a blank line to end):
+&gt; Buy book
+&gt; 
+Input an action (add, print, edit, delete, end):
+&gt; print
+1  2022-05-05 17:00 H T
+   See my dentist
+
+2  2022-05-12 17:00 N I
+   Cinema: get tickets
+   Check movie reviews
+
+3  2022-04-28 19:00 N o
+   Supermarket
+   Chocolates
+   flour
+   oranges
+
+4  2022-05-12 12:00 L I
+   Buy book
+
+Input an action (add, print, edit, delete, end):
+&gt; delete
+1  2022-05-05 17:00 H T
+   See my dentist
+
+2  2022-05-12 17:00 N I
+   Cinema: get tickets
+   Check movie reviews
+
+3  2022-04-28 19:00 N o
+   Supermarket
+   Chocolates
+   flour
+   oranges
+
+4  2022-05-12 12:00 L I
+   Buy book
+
+Input the task number (1-4):
+&gt; 1
+The task is deleted
+Input an action (add, print, edit, delete, end):
+&gt; delete
+2  2022-05-12 17:00 N I
+   Cinema: get tickets
+   Check movie reviews
+
+3  2022-04-28 19:00 N o
+   Supermarket
+   Chocolates
+   flour
+   oranges
+
+4  2022-05-12 12:00 L I
+   Buy book
+
+Input the task number (1-3):
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:155)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -78,38 +248,38 @@
 </tr>
 </thead>
 <tr>
-<td class="success">start</td>
-<td class="success">0.136s</td>
-<td class="success">passed</td>
+<td class="failures">start</td>
+<td class="failures">0.178s</td>
+<td class="failures">failed</td>
 </tr>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
 <pre>?[1;31m
 Start test 1?[0m
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; input
 The input action is invalid
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; task
 The input action is invalid
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; 
 The input action is invalid
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; 123
 The input action is invalid
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt;  
 The input action is invalid
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; end
 Tasklist exiting!
 ?[1;31m
 Start test 2?[0m
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; normal
@@ -130,12 +300,12 @@ Input the time (hh:mm):
 Input a new task (enter a blank line to end):
 &gt; Happy new year!
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; end
 Tasklist exiting!
 ?[1;31m
 Start test 3?[0m
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; N
@@ -161,12 +331,12 @@ Input the time (hh:mm):
 Input a new task (enter a blank line to end):
 &gt; Happy new year!
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; end
 Tasklist exiting!
 ?[1;31m
 Start test 4?[0m
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; N
@@ -192,12 +362,12 @@ Input the time (hh:mm):
 Input a new task (enter a blank line to end):
 &gt; Happy new year!
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; end
 Tasklist exiting!
 ?[1;31m
 Start test 5?[0m
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; N
@@ -208,40 +378,54 @@ Input the time (hh:mm):
 Input a new task (enter a blank line to end):
 &gt;      
 The task is blank
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; end
 Tasklist exiting!
 ?[1;31m
 Start test 6?[0m
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
+&gt; print
+No tasks have been input
+Input an action (add, print, edit, delete, end):
+&gt; edit
+No tasks have been input
+Input an action (add, print, edit, delete, end):
+&gt; delete
+No tasks have been input
+Input an action (add, print, edit, delete, end):
+&gt; end
+Tasklist exiting!
+?[1;31m
+Start test 7?[0m
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; H
 Input the date (yyyy-mm-dd):
-&gt; 2022-1-14
+&gt; 2022-05-05
 Input the time (hh:mm):
 &gt; 17:00
 Input a new task (enter a blank line to end):
-&gt; See my dentist on 14/1/22
+&gt; See my dentist
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; N
 Input the date (yyyy-mm-dd):
-&gt; 2022-12-20
+&gt; 2022-05-12
 Input the time (hh:mm):
 &gt; 17:00
 Input a new task (enter a blank line to end):
 &gt; Cinema: get tickets
 &gt; Check movie reviews
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; n
 Input the date (yyyy-mm-dd):
-&gt; 2021-12-13
+&gt; 2022-04-28
 Input the time (hh:mm):
 &gt; 19:00
 Input a new task (enter a blank line to end):
@@ -250,152 +434,257 @@ Input a new task (enter a blank line to end):
 &gt; flour
 &gt; oranges
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; l
 Input the date (yyyy-mm-dd):
-&gt; 2022-01-20
+&gt; 2022-05-12
 Input the time (hh:mm):
 &gt; 12:00
 Input a new task (enter a blank line to end):
 &gt; Buy book
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; N
 Input the date (yyyy-mm-dd):
-&gt; 2022-01-08
+&gt; 2022-05-05
 Input the time (hh:mm):
 &gt; 12:00
 Input a new task (enter a blank line to end):
 &gt; Check new software
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; C
 Input the date (yyyy-mm-dd):
-&gt; 2021-1-20
+&gt; 2022-04-28
 Input the time (hh:mm):
 &gt; 16:00
 Input a new task (enter a blank line to end):
 &gt; Fill car tank
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; c
 Input the date (yyyy-mm-dd):
-&gt; 2022-1-22
+&gt; 2022-05-12
 Input the time (hh:mm):
 &gt; 18:15
 Input a new task (enter a blank line to end):
 &gt; Pay phone bill
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; l
 Input the date (yyyy-mm-dd):
-&gt; 2022-1-22
+&gt; 2022-05-12
 Input the time (hh:mm):
 &gt; 18:15
 Input a new task (enter a blank line to end):
 &gt; Pay water bill
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; L
 Input the date (yyyy-mm-dd):
-&gt; 2022-1-22
+&gt; 2022-04-28
 Input the time (hh:mm):
 &gt; 08:05
 Input a new task (enter a blank line to end):
 &gt; Buy flowers
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; C
 Input the date (yyyy-mm-dd):
-&gt; 2021-12-19
+&gt; 2022-05-05
 Input the time (hh:mm):
 &gt; 12:00
 Input a new task (enter a blank line to end):
 &gt; Fix printer
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; h
 Input the date (yyyy-mm-dd):
-&gt; 2021-12-1
+&gt; 2022-04-28
 Input the time (hh:mm):
 &gt; 12:00
 Input a new task (enter a blank line to end):
 &gt; Change site
 &gt; Use Christmas theme
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; add
 Input the task priority (C, H, N, L):
 &gt; l
 Input the date (yyyy-mm-dd):
-&gt; 2022-2-22
+&gt; 2022-05-12
 Input the time (hh:mm):
 &gt; 12:00
 Input a new task (enter a blank line to end):
 &gt; Present for friend birthday
 &gt; 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; print
-1  2022-01-14 17:00 H
-   See my dentist on 14/1/22
+1  2022-05-05 17:00 H T
+   See my dentist
 
-2  2022-12-20 17:00 N
+2  2022-05-12 17:00 N I
    Cinema: get tickets
    Check movie reviews
 
-3  2021-12-13 19:00 N
+3  2022-04-28 19:00 N o
    Supermarket
    Chocolates
    flour
    oranges
 
-4  2022-01-20 12:00 L
+4  2022-05-12 12:00 L I
    Buy book
 
-5  2022-01-08 12:00 N
+5  2022-05-05 12:00 N T
    Check new software
 
-6  2021-01-20 16:00 C
+6  2022-04-28 16:00 C o
    Fill car tank
 
-7  2022-01-22 18:15 C
+7  2022-05-12 18:15 C I
    Pay phone bill
 
-8  2022-01-22 18:15 L
+8  2022-05-12 18:15 L I
    Pay water bill
 
-9  2022-01-22 08:05 L
+9  2022-04-28 08:05 L o
    Buy flowers
 
-10 2021-12-19 12:00 C
+10 2022-05-05 12:00 C T
    Fix printer
 
-11 2021-12-01 12:00 H
+11 2022-04-28 12:00 H o
    Change site
    Use Christmas theme
 
-12 2022-02-22 12:00 L
+12 2022-05-12 12:00 L I
    Present for friend birthday
 
-Input an action (add, print, end):
+Input an action (add, print, edit, delete, end):
 &gt; end
 Tasklist exiting!
+?[1;31m
+Start test 8?[0m
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; H
+Input the date (yyyy-mm-dd):
+&gt; 2022-05-05
+Input the time (hh:mm):
+&gt; 17:00
+Input a new task (enter a blank line to end):
+&gt; See my dentist
+&gt; 
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2022-05-12
+Input the time (hh:mm):
+&gt; 17:00
+Input a new task (enter a blank line to end):
+&gt; Cinema: get tickets
+&gt; Check movie reviews
+&gt; 
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; n
+Input the date (yyyy-mm-dd):
+&gt; 2022-04-28
+Input the time (hh:mm):
+&gt; 19:00
+Input a new task (enter a blank line to end):
+&gt; Supermarket
+&gt; Chocolates
+&gt; flour
+&gt; oranges
+&gt; 
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; l
+Input the date (yyyy-mm-dd):
+&gt; 2022-05-12
+Input the time (hh:mm):
+&gt; 12:00
+Input a new task (enter a blank line to end):
+&gt; Buy book
+&gt; 
+Input an action (add, print, edit, delete, end):
+&gt; print
+1  2022-05-05 17:00 H T
+   See my dentist
+
+2  2022-05-12 17:00 N I
+   Cinema: get tickets
+   Check movie reviews
+
+3  2022-04-28 19:00 N o
+   Supermarket
+   Chocolates
+   flour
+   oranges
+
+4  2022-05-12 12:00 L I
+   Buy book
+
+Input an action (add, print, edit, delete, end):
+&gt; delete
+1  2022-05-05 17:00 H T
+   See my dentist
+
+2  2022-05-12 17:00 N I
+   Cinema: get tickets
+   Check movie reviews
+
+3  2022-04-28 19:00 N o
+   Supermarket
+   Chocolates
+   flour
+   oranges
+
+4  2022-05-12 12:00 L I
+   Buy book
+
+Input the task number (1-4):
+&gt; 1
+The task is deleted
+Input an action (add, print, edit, delete, end):
+&gt; delete
+2  2022-05-12 17:00 N I
+   Cinema: get tickets
+   Check movie reviews
+
+3  2022-04-28 19:00 N o
+   Supermarket
+   Chocolates
+   flour
+   oranges
+
+4  2022-05-12 12:00 L I
+   Buy book
+
+Input the task number (1-3):
 </pre>
 </span>
 </div>
@@ -407,7 +696,7 @@ Tasklist exiting!
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.3.3</a> at 4 May 2022, 22:23:29</p>
+<a href="http://www.gradle.org">Gradle 7.3.3</a> at 5 May 2022, 23:02:55</p>
 </div>
 </div>
 </body>

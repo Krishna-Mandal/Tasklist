@@ -576,5 +576,37 @@ files:
 
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/18597#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: "Wrong answer in test #8\n\nYour output should contain &quot;1  2022-05-12\
+    \ 17:00 N I\n   Cinema: get tickets\n   Check movie reviews\n&quot;\n\nPlease\
+    \ find below the output of your program during this failed test.\nNote that the\
+    \ &#39;&gt;&#39; character indicates the beginning of the input line.\n\n---\n\
+    \nInput an action (add, print, edit, delete, end):\n&gt; add\nInput the task priority\
+    \ (C, H, N, L):\n&gt; H\nInput the date (yyyy-mm-dd):\n&gt; 2022-05-05\nInput\
+    \ the time (hh:mm):\n&gt; 17:00\nInput a new task (enter a blank line to end):\n\
+    &gt; See my dentist\n&gt; \nInput an action (add, print, edit, delete, end):\n\
+    &gt; add\nInput the task priority (C, H, N, L):\n&gt; N\nInput the date (yyyy-mm-dd):\n\
+    &gt; 2022-05-12\nInput the time (hh:mm):\n&gt; 17:00\nInput a new task (enter\
+    \ a blank line to end):\n&gt; Cinema: get tickets\n&gt; Check movie reviews\n\
+    &gt; \nInput an action (add, print, edit, delete, end):\n&gt; add\nInput the task\
+    \ priority (C, H, N, L):\n&gt; n\nInput the date (yyyy-mm-dd):\n&gt; 2022-04-28\n\
+    Input the time (hh:mm):\n&gt; 19:00\nInput a new task (enter a blank line to end):\n\
+    &gt; Supermarket\n&gt; Chocolates\n&gt; flour\n&gt; oranges\n&gt; \nInput an action\
+    \ (add, print, edit, delete, end):\n&gt; add\nInput the task priority (C, H, N,\
+    \ L):\n&gt; l\nInput the date (yyyy-mm-dd):\n&gt; 2022-05-12\nInput the time (hh:mm):\n\
+    &gt; 12:00\nInput a new task (enter a blank line to end):\n&gt; Buy book\n&gt;\
+    \ \nInput an action (add, print, edit, delete, end):\n&gt; print\n1  2022-05-05\
+    \ 17:00 H T\n   See my dentist\n\n2  2022-05-12 17:00 N I\n   Cinema: get tickets\n\
+    \   Check movie reviews\n\n3  2022-04-28 19:00 N o\n   Supermarket\n   Chocolates\n\
+    \   flour\n   oranges\n\n4  2022-05-12 12:00 L I\n   Buy book\n\nInput an action\
+    \ (add, print, edit, delete, end):\n&gt; delete\n1  2022-05-05 17:00 H T\n   See\
+    \ my dentist\n\n2  2022-05-12 17:00 N I\n   Cinema: get tickets\n   Check movie\
+    \ reviews\n\n3  2022-04-28 19:00 N o\n   Supermarket\n   Chocolates\n   flour\n\
+    \   oranges\n\n4  2022-05-12 12:00 L I\n   Buy book\n\nInput the task number (1-4):\n\
+    &gt; 1\nThe task is deleted\nInput an action (add, print, edit, delete, end):\n\
+    &gt; delete\n2  2022-05-12 17:00 N I\n   Cinema: get tickets\n   Check movie reviews\n\
+    \n3  2022-04-28 19:00 N o\n   Supermarket\n   Chocolates\n   flour\n   oranges\n\
+    \n4  2022-05-12 12:00 L I\n   Buy book\n\nInput the task number (1-3):"
+  time: Thu, 05 May 2022 21:02:55 UTC
 record: -1

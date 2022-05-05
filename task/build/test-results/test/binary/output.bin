@@ -1,0 +1,311 @@
+[1;31m
+Start test 1[0m
+#Input an action (add, print, end):
+> input
+The input action is invalid
+#Input an action (add, print, end):
+> task
+The input action is invalid
+#Input an action (add, print, end):
+> 
+The input action is invalid
+#Input an action (add, print, end):
+> 123
+The input action is invalid
+#Input an action (add, print, end):
+>  
+The input action is invalid
+#Input an action (add, print, end):
+> end
+Tasklist exiting!
+[1;31m
+Start test 2[0m
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+	> normal
+&Input the task priority (C, H, N, L):
+> Critical
+&Input the task priority (C, H, N, L):
+> low
+&Input the task priority (C, H, N, L):
+> high
+&Input the task priority (C, H, N, L):
+>  
+&Input the task priority (C, H, N, L):
+> N
+Input the date (yyyy-mm-dd):
+> 2022-1-1
+Input the time (hh:mm):
+> 0:0
+.Input a new task (enter a blank line to end):
+> Happy new year!
+> 
+#Input an action (add, print, end):
+> end
+Tasklist exiting!
+[1;31m
+Start test 3[0m
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> N
+Input the date (yyyy-mm-dd):
+> 2021-2-29
+The input date is invalid
+Input the date (yyyy-mm-dd):
+> 2021-13-1
+The input date is invalid
+Input the date (yyyy-mm-dd):
+> 2021-12-32
+The input date is invalid
+Input the date (yyyy-mm-dd):
+
+> thisDay
+The input date is invalid
+Input the date (yyyy-mm-dd):
+>  
+The input date is invalid
+Input the date (yyyy-mm-dd):
+> 2022-1-1
+Input the time (hh:mm):
+> 0:0
+.Input a new task (enter a blank line to end):
+> Happy new year!
+> 
+#Input an action (add, print, end):
+> end
+Tasklist exiting!
+[1;31m
+Start test 4[0m
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> N
+Input the date (yyyy-mm-dd):
+> 2022-1-1
+Input the time (hh:mm):
+> 24:00
+The input time is invalid
+Input the time (hh:mm):
+> 12:60
+The input time is invalid
+Input the time (hh:mm):
+> 12.12
+The input time is invalid
+Input the time (hh:mm):
+> thisTime
+The input time is invalid
+Input the time (hh:mm):
+>  
+The input time is invalid
+Input the time (hh:mm):
+> 0:0
+.Input a new task (enter a blank line to end):
+> Happy new year!
+> 
+#Input an action (add, print, end):
+> end
+Tasklist exiting!
+[1;31m
+Start test 5[0m
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> N
+Input the date (yyyy-mm-dd):
+> 2022-1-1
+Input the time (hh:mm):
+> 0:0
+.Input a new task (enter a blank line to end):
+>      
+The task is blank
+#Input an action (add, print, end):
+> end
+Tasklist exiting!
+[1;31m
+Start test 6[0m
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> H
+Input the date (yyyy-mm-dd):
+> 2022-1-14
+Input the time (hh:mm):
+> 17:00
+.Input a new task (enter a blank line to end):
+> See my dentist on 14/1/22
+> 
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> N
+Input the date (yyyy-mm-dd):
+> 2022-12-20
+Input the time (hh:mm):
+> 17:00
+.Input a new task (enter a blank line to end):
+> Cinema: get tickets
+> Check movie reviews
+> 
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> n
+Input the date (yyyy-mm-dd):
+> 2021-12-13
+Input the time (hh:mm):
+> 19:00
+.Input a new task (enter a blank line to end):
+> Supermarket
+> Chocolates
+> flour
+
+> oranges
+> 
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> l
+Input the date (yyyy-mm-dd):
+> 2022-01-20
+Input the time (hh:mm):
+> 12:00
+.Input a new task (enter a blank line to end):
+> Buy book
+> 
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> N
+Input the date (yyyy-mm-dd):
+> 2022-01-08
+Input the time (hh:mm):
+> 12:00
+.Input a new task (enter a blank line to end):
+> Check new software
+> 
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> C
+Input the date (yyyy-mm-dd):
+> 2021-1-20
+Input the time (hh:mm):
+> 16:00
+.Input a new task (enter a blank line to end):
+> Fill car tank
+> 
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> c
+Input the date (yyyy-mm-dd):
+> 2022-1-22
+Input the time (hh:mm):
+> 18:15
+.Input a new task (enter a blank line to end):
+> Pay phone bill
+> 
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> l
+Input the date (yyyy-mm-dd):
+> 2022-1-22
+Input the time (hh:mm):
+> 18:15
+.Input a new task (enter a blank line to end):
+> Pay water bill
+> 
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> L
+Input the date (yyyy-mm-dd):
+> 2022-1-22
+Input the time (hh:mm):
+> 08:05
+.Input a new task (enter a blank line to end):
+> Buy flowers
+> 
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> C
+Input the date (yyyy-mm-dd):
+> 2021-12-19
+Input the time (hh:mm):
+> 12:00
+.Input a new task (enter a blank line to end):
+> Fix printer
+> 
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> h
+Input the date (yyyy-mm-dd):
+> 2021-12-1
+Input the time (hh:mm):
+> 12:00
+.Input a new task (enter a blank line to end):
+> Change site
+> Use Christmas theme
+> 
+#Input an action (add, print, end):
+> add
+&Input the task priority (C, H, N, L):
+> l
+Input the date (yyyy-mm-dd):
+> 2022-2-22
+Input the time (hh:mm):
+> 12:00
+.Input a new task (enter a blank line to end):
+> Present for friend birthday
+> 
+#Input an action (add, print, end):
+> print
+1  2022-01-14 17:00 H
+   See my dentist on 14/1/22
+
+2  2022-12-20 17:00 N
+   Cinema: get tickets
+   Check movie reviews
+
+3  2021-12-13 19:00 N
+   Supermarket
+   Chocolates
+	   flour
+   oranges
+
+4  2022-01-20 12:00 L
+   Buy book
+
+5  2022-01-08 12:00 N
+   Check new software
+
+6  2021-01-20 16:00 C
+   Fill car tank
+
+7  2022-01-22 18:15 C
+   Pay phone bill
+
+8  2022-01-22 18:15 L
+   Pay water bill
+
+9  2022-01-22 08:05 L
+   Buy flowers
+
+10 2021-12-19 12:00 C
+   Fix printer
+
+11 2021-12-01 12:00 H
+   Change site
+   Use Christmas theme
+
+12 2022-02-22 12:00 L
+   Present for friend birthday
+
+#Input an action (add, print, end):
+> end
+Tasklist exiting!

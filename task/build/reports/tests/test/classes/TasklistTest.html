@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class TasklistTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class TasklistTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/default-package.html">default-package</a> &gt; TasklistTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.136s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">start</td>
+<td class="success">0.136s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>?[1;31m
+Start test 1?[0m
+Input an action (add, print, end):
+&gt; input
+The input action is invalid
+Input an action (add, print, end):
+&gt; task
+The input action is invalid
+Input an action (add, print, end):
+&gt; 
+The input action is invalid
+Input an action (add, print, end):
+&gt; 123
+The input action is invalid
+Input an action (add, print, end):
+&gt;  
+The input action is invalid
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!
+?[1;31m
+Start test 2?[0m
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; normal
+Input the task priority (C, H, N, L):
+&gt; Critical
+Input the task priority (C, H, N, L):
+&gt; low
+Input the task priority (C, H, N, L):
+&gt; high
+Input the task priority (C, H, N, L):
+&gt;  
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-1
+Input the time (hh:mm):
+&gt; 0:0
+Input a new task (enter a blank line to end):
+&gt; Happy new year!
+&gt; 
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!
+?[1;31m
+Start test 3?[0m
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2021-2-29
+The input date is invalid
+Input the date (yyyy-mm-dd):
+&gt; 2021-13-1
+The input date is invalid
+Input the date (yyyy-mm-dd):
+&gt; 2021-12-32
+The input date is invalid
+Input the date (yyyy-mm-dd):
+&gt; thisDay
+The input date is invalid
+Input the date (yyyy-mm-dd):
+&gt;  
+The input date is invalid
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-1
+Input the time (hh:mm):
+&gt; 0:0
+Input a new task (enter a blank line to end):
+&gt; Happy new year!
+&gt; 
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!
+?[1;31m
+Start test 4?[0m
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-1
+Input the time (hh:mm):
+&gt; 24:00
+The input time is invalid
+Input the time (hh:mm):
+&gt; 12:60
+The input time is invalid
+Input the time (hh:mm):
+&gt; 12.12
+The input time is invalid
+Input the time (hh:mm):
+&gt; thisTime
+The input time is invalid
+Input the time (hh:mm):
+&gt;  
+The input time is invalid
+Input the time (hh:mm):
+&gt; 0:0
+Input a new task (enter a blank line to end):
+&gt; Happy new year!
+&gt; 
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!
+?[1;31m
+Start test 5?[0m
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-1
+Input the time (hh:mm):
+&gt; 0:0
+Input a new task (enter a blank line to end):
+&gt;      
+The task is blank
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!
+?[1;31m
+Start test 6?[0m
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; H
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-14
+Input the time (hh:mm):
+&gt; 17:00
+Input a new task (enter a blank line to end):
+&gt; See my dentist on 14/1/22
+&gt; 
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2022-12-20
+Input the time (hh:mm):
+&gt; 17:00
+Input a new task (enter a blank line to end):
+&gt; Cinema: get tickets
+&gt; Check movie reviews
+&gt; 
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; n
+Input the date (yyyy-mm-dd):
+&gt; 2021-12-13
+Input the time (hh:mm):
+&gt; 19:00
+Input a new task (enter a blank line to end):
+&gt; Supermarket
+&gt; Chocolates
+&gt; flour
+&gt; oranges
+&gt; 
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; l
+Input the date (yyyy-mm-dd):
+&gt; 2022-01-20
+Input the time (hh:mm):
+&gt; 12:00
+Input a new task (enter a blank line to end):
+&gt; Buy book
+&gt; 
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2022-01-08
+Input the time (hh:mm):
+&gt; 12:00
+Input a new task (enter a blank line to end):
+&gt; Check new software
+&gt; 
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; C
+Input the date (yyyy-mm-dd):
+&gt; 2021-1-20
+Input the time (hh:mm):
+&gt; 16:00
+Input a new task (enter a blank line to end):
+&gt; Fill car tank
+&gt; 
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; c
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-22
+Input the time (hh:mm):
+&gt; 18:15
+Input a new task (enter a blank line to end):
+&gt; Pay phone bill
+&gt; 
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; l
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-22
+Input the time (hh:mm):
+&gt; 18:15
+Input a new task (enter a blank line to end):
+&gt; Pay water bill
+&gt; 
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; L
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-22
+Input the time (hh:mm):
+&gt; 08:05
+Input a new task (enter a blank line to end):
+&gt; Buy flowers
+&gt; 
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; C
+Input the date (yyyy-mm-dd):
+&gt; 2021-12-19
+Input the time (hh:mm):
+&gt; 12:00
+Input a new task (enter a blank line to end):
+&gt; Fix printer
+&gt; 
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; h
+Input the date (yyyy-mm-dd):
+&gt; 2021-12-1
+Input the time (hh:mm):
+&gt; 12:00
+Input a new task (enter a blank line to end):
+&gt; Change site
+&gt; Use Christmas theme
+&gt; 
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; l
+Input the date (yyyy-mm-dd):
+&gt; 2022-2-22
+Input the time (hh:mm):
+&gt; 12:00
+Input a new task (enter a blank line to end):
+&gt; Present for friend birthday
+&gt; 
+Input an action (add, print, end):
+&gt; print
+1  2022-01-14 17:00 H
+   See my dentist on 14/1/22
+
+2  2022-12-20 17:00 N
+   Cinema: get tickets
+   Check movie reviews
+
+3  2021-12-13 19:00 N
+   Supermarket
+   Chocolates
+   flour
+   oranges
+
+4  2022-01-20 12:00 L
+   Buy book
+
+5  2022-01-08 12:00 N
+   Check new software
+
+6  2021-01-20 16:00 C
+   Fill car tank
+
+7  2022-01-22 18:15 C
+   Pay phone bill
+
+8  2022-01-22 18:15 L
+   Pay water bill
+
+9  2022-01-22 08:05 L
+   Buy flowers
+
+10 2021-12-19 12:00 C
+   Fix printer
+
+11 2021-12-01 12:00 H
+   Change site
+   Use Christmas theme
+
+12 2022-02-22 12:00 L
+   Present for friend birthday
+
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.3.3</a> at 4 May 2022, 22:23:29</p>
+</div>
+</div>
+</body>
+</html>

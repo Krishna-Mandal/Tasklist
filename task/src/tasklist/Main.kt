@@ -111,8 +111,9 @@ fun printTaskList(tasks: MutableMap<String, List<String>>) {
     if (tasks.isEmpty()) {
         println("No tasks have been input")
     } else {
+        var number = 0
         tasks.forEach{ (mapKey, taskList) ->
-            println(mapKey)
+            println("${++number}${numOfSpaces(number)}$mapKey")
             taskList.forEach{
                 println("   $it")
             }
@@ -121,13 +122,9 @@ fun printTaskList(tasks: MutableMap<String, List<String>>) {
     }
 }
 
-fun addTask(tasks: MutableMap<String, List<String>>, date: String, time: String, prio: String, index: String = "") {
+fun addTask(tasks: MutableMap<String, List<String>>, date: String, time: String, prio: String) {
     println("Input a new task (enter a blank line to end):")
-    var lastIndex = index
-    if (index.isEmpty()) {
-        lastIndex = "${tasks.size + 1}"
-    }
-    val mapKey = "$lastIndex${numOfSpaces(tasks.size + 1)}$date $time $prio ${getDueTag(date)}"
+    val mapKey = "$date $time $prio ${getDueTag(date)}"
     do {
         val input = readln()
         if (input.isNotBlank()) {
@@ -154,7 +151,6 @@ fun deleteTask(tasks: MutableMap<String, List<String>>) {
     if (tasks.isEmpty()) {
         println("No tasks have been input")
     } else {
-
         printTaskList(tasks)
         println("Input the task number (1-${tasks.size}):")
         val taskNumber = readln().trim()
@@ -203,7 +199,7 @@ fun getDueTag(date: String): String {
     return when {
         numberOfDays == 0 -> "T"
         numberOfDays > 0 -> "I"
-        else -> "o"
+        else -> "O"
     }
 }
 
@@ -235,7 +231,7 @@ fun editTaskByType(tasks: MutableMap<String, List<String>>, fieldType: VALIDFIEL
         }
         else -> {
             tasks.remove(key)
-            addTask(tasks, oldKeys[1], oldKeys[2], oldKeys[3], oldKeys[0])
+            addTask(tasks, oldKeys[1], oldKeys[2], oldKeys[3])
         }
     }
 }
@@ -247,11 +243,11 @@ fun getKeys(keys: List<String>, number: String): String {
         return "INVALID"
     }
 
-    if (keys.map { it.split(" ").first().toInt() }.none { it == number.toInt() }) {
+    if (number.toInt() >= keys.size) {
         return "INVALID"
     }
 
-    return keys.groupBy { it.split(" ").first() }[number]!!.first()
+    return keys[number.toInt()]
 }
 
 fun numOfSpaces(index: Int): String {

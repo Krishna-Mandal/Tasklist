@@ -286,7 +286,7 @@
    Cinema: get tickets
    Check movie reviews
 
-3  2022-04-28 19:00 N o
+3  2022-04-28 19:00 N O
    Supermarket
    Chocolates
 	   flour
@@ -294,11 +294,12 @@
 
 4  2022-05-12 12:00 L I
    Buy book
+   Present for friend birthday
 
 5  2022-05-05 12:00 N T
    Check new software
 
-6  2022-04-28 16:00 C o
+6  2022-04-28 16:00 C O
    Fill car tank
 
 7  2022-05-12 18:15 C I
@@ -307,125 +308,14 @@
 8  2022-05-12 18:15 L I
    Pay water bill
 
-9  2022-04-28 08:05 L o
+9  2022-04-28 08:05 L O
    Buy flowers
 
 10 2022-05-05 12:00 C T
    Fix printer
 
-11 2022-04-28 12:00 H o
+11 2022-04-28 12:00 H O
    Change site
    Use Christmas theme
 
-12 2022-05-12 12:00 L I
-   Present for friend birthday
-
 1Input an action (add, print, edit, delete, end):
-> end
-Tasklist exiting!
-[1;31m
-Start test 8[0m
-1Input an action (add, print, edit, delete, end):
-> add
-&Input the task priority (C, H, N, L):
-> H
-Input the date (yyyy-mm-dd):
-> 2022-05-05
-Input the time (hh:mm):
-> 17:00
-.Input a new task (enter a blank line to end):
-> See my dentist
-> 
-1Input an action (add, print, edit, delete, end):
-> add
-&Input the task priority (C, H, N, L):
-> N
-Input the date (yyyy-mm-dd):
-> 2022-05-12
-Input the time (hh:mm):
-> 17:00
-.Input a new task (enter a blank line to end):
-> Cinema: get tickets
-> Check movie reviews
-> 
-1Input an action (add, print, edit, delete, end):
-> add
-&Input the task priority (C, H, N, L):
-> n
-Input the date (yyyy-mm-dd):
-> 2022-04-28
-Input the time (hh:mm):
-> 19:00
-.Input a new task (enter a blank line to end):
-> Supermarket
-> Chocolates
-> flour
-
-> oranges
-> 
-1Input an action (add, print, edit, delete, end):
-> add
-&Input the task priority (C, H, N, L):
-> l
-Input the date (yyyy-mm-dd):
-> 2022-05-12
-Input the time (hh:mm):
-> 12:00
-.Input a new task (enter a blank line to end):
-> Buy book
-> 
-1Input an action (add, print, edit, delete, end):
-> print
-1  2022-05-05 17:00 H T
-   See my dentist
-
-2  2022-05-12 17:00 N I
-   Cinema: get tickets
-   Check movie reviews
-
-3  2022-04-28 19:00 N o
-   Supermarket
-   Chocolates
-	   flour
-   oranges
-
-4  2022-05-12 12:00 L I
-   Buy book
-
-1Input an action (add, print, edit, delete, end):
-	> delete
-1  2022-05-05 17:00 H T
-   See my dentist
-
-2  2022-05-12 17:00 N I
-   Cinema: get tickets
-   Check movie reviews
-
-3  2022-04-28 19:00 N o
-   Supermarket
-   Chocolates
-	   flour
-   oranges
-
-4  2022-05-12 12:00 L I
-   Buy book
-
-Input the task number (1-4):
-> 1
-The task is deleted
-1Input an action (add, print, edit, delete, end):
-	> delete
-2  2022-05-12 17:00 N I
-   Cinema: get tickets
-   Check movie reviews
-
-3  2022-04-28 19:00 N o
-   Supermarket
-   Chocolates
-	   flour
-   oranges
-
-4  2022-05-12 12:00 L I
-   Buy book
-
-Input the task number (1-3):

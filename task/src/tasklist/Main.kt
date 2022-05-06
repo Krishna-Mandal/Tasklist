@@ -11,11 +11,11 @@ const val DELETE = "delete"
 
 val APRIORIST = listOf("C", "H", "N", "L")
 
-enum class VALIDFIELDS(s: String) {
-    PRIORITY("priority"),
-    DATE("date"),
-    TIME("time"),
-    TASK("task");
+enum class VALIDFIELDS {
+    PRIORITY,
+    DATE,
+    TIME,
+    TASK;
 
     companion object {
         fun isValidEnum(value: String): Boolean {
@@ -81,14 +81,14 @@ fun getTime(): String {
 }
 
 fun perFormTask() {
-    val taskList = mutableMapOf<String, List<String>>()
+    val taskList = mutableListOf<MutableList<String>>()
     while (true) {
         println("Input an action (add, print, edit, delete, end):")
         validateUserInput(readln().trim(), taskList)
     }
 }
 
-fun validateUserInput(command: String, taskList: MutableMap<String, List<String>>) {
+fun validateUserInput(command: String, taskList: MutableList<MutableList<String>>) {
     when(command) {
         ADD -> {
             val prio = getTaskPriority()
@@ -107,86 +107,88 @@ fun validateUserInput(command: String, taskList: MutableMap<String, List<String>
     }
 }
 
-fun printTaskList(tasks: MutableMap<String, List<String>>) {
+fun printTaskList(tasks: MutableList<MutableList<String>>) {
     if (tasks.isEmpty()) {
         println("No tasks have been input")
     } else {
         var number = 0
-        tasks.forEach{ (mapKey, taskList) ->
-            println("${++number}${numOfSpaces(number)}$mapKey")
-            taskList.forEach{
-                println("   $it")
+        tasks.forEach{ taskList ->
+            println("${++number}${numOfSpaces(number)}${taskList.first()}")
+            for (index in 1 until taskList.size) {
+                println("   ${taskList[index]}")
             }
             println()
         }
     }
 }
 
-fun addTask(tasks: MutableMap<String, List<String>>, date: String, time: String, prio: String) {
+fun addTask(tasks: MutableList<MutableList<String>>, date: String, time: String, prio: String) {
     println("Input a new task (enter a blank line to end):")
     val mapKey = "$date $time $prio ${getDueTag(date)}"
+    val tempList = mutableListOf<String>()
+    tempList.add(mapKey)
     do {
         val input = readln()
         if (input.isNotBlank()) {
-            val list = getTasks(tasks, mapKey)
-            list.add(input.trim())
-            tasks[mapKey] = list
+            tempList.add(input.trim())
         } else {
-            if (!tasks.containsKey(mapKey)) {
+            if (tempList.size == 1) {
                 println("The task is blank")
             }
         }
     } while (input.isNotBlank())
-}
 
-fun getTasks(tasks: MutableMap<String, List<String>>, mapKey: String): MutableList<String> {
-    return if (tasks.isEmpty() || !tasks.containsKey(mapKey)) {
-        mutableListOf()
-    } else {
-        tasks[mapKey]!!.toMutableList()
+    if (tempList.size > 1) {
+        tasks.add(tempList)
     }
 }
 
-fun deleteTask(tasks: MutableMap<String, List<String>>) {
+fun deleteTask(tasks: MutableList<MutableList<String>>) {
     if (tasks.isEmpty()) {
         println("No tasks have been input")
     } else {
         printTaskList(tasks)
-        println("Input the task number (1-${tasks.size}):")
-        val taskNumber = readln().trim()
-        val key = getKeys(tasks.keys.toList(), taskNumber)
 
-        if(key == "INVALID") {
-            println("Invalid task number")
-        } else {
-            tasks.remove(key)
-            println("The task is deleted")
-        }
+        do {
+            println("Input the task number (1-${tasks.size}):")
+            val taskNumber = readln().trim()
+            val isValidKey = validateIndex(tasks.map { it.first() }, taskNumber)
+            if(isValidKey == "INVALID") {
+                println("Invalid task number")
+            } else {
+                tasks.removeAt(taskNumber.toInt() - 1)
+                println("The task is deleted")
+            }
+        } while (isValidKey == "INVALID")
     }
 }
 
-fun editTask(tasks: MutableMap<String, List<String>>) {
+fun editTask(tasks: MutableList<MutableList<String>>) {
     if (tasks.isEmpty()) {
         println("No tasks have been input")
     } else {
-        println("Input the task number (1-${tasks.size}):")
-        val taskNumber = readln().trim()
-        val key = getKeys(tasks.keys.toList(), taskNumber)
+        printTaskList(tasks)
 
-        if(key == "INVALID") {
-            println("Invalid task number")
-        } else {
-            println("Input a field to edit (priority, date, time, task):")
-            val field = readln()
-            do {
-                if (VALIDFIELDS.isValidEnum(field)) {
-                    println("Invalid field")
-                } else {
-                    editTaskByType(tasks, VALIDFIELDS.valueOf(field), key)
-                }
-            } while (VALIDFIELDS.isValidEnum(field))
-            println("The task is changed")
-        }
+        do {
+            println("Input the task number (1-${tasks.size}):")
+            val taskNumber = readln().trim()
+            val isValidKey = validateIndex(tasks.map { it.first() }, taskNumber)
+
+            if(isValidKey == "INVALID") {
+                println("Invalid task number")
+            } else {
+                do {
+                    println("Input a field to edit (priority, date, time, task):")
+                    val field = readln().uppercase()
+                    if (!VALIDFIELDS.isValidEnum(field)) {
+                        println("Invalid field")
+                    } else {
+                        editTaskByType(tasks, VALIDFIELDS.valueOf(field), taskNumber)
+                        println("The task is changed")
+                    }
+                } while (!VALIDFIELDS.isValidEnum(field))
+            }
+        } while (isValidKey == "INVALID")
     }
 }
 
@@ -203,51 +205,54 @@ fun getDueTag(date: String): String {
     }
 }
 
-fun editTaskByType(tasks: MutableMap<String, List<String>>, fieldType: VALIDFIELDS, key: String) {
-    val oldKeys = key.split(" ").toMutableList()
-    val value: List<String>? = tasks[key]
+fun editTaskByType(tasks: MutableList<MutableList<String>>, fieldType: VALIDFIELDS, key: String) {
+    val currentKeyAndValue = tasks[key.toInt() - 1]
+    val oldKeys = currentKeyAndValue.first().split(" ").toMutableList()
+    val value: List<String> = currentKeyAndValue - currentKeyAndValue.first()
+    val tempList = mutableListOf<String>()
+
     when(fieldType) {
         VALIDFIELDS.DATE -> {
-            oldKeys[1] = getDate()
-            oldKeys[4] = getDueTag(oldKeys[1])
-            tasks.remove(key)
-            if (value != null) {
-                tasks[oldKeys.joinToString (separator = " ")] = value
-            }
+            oldKeys[0] = getDate()
+            oldKeys[3] = getDueTag(oldKeys[0])
+            tasks.removeAt(key.toInt() - 1)
+            tempList.add(oldKeys.joinToString (separator = " "))
+            tempList.addAll(value)
+            tasks.add(tempList)
         }
         VALIDFIELDS.TIME -> {
-            oldKeys[2] = getTime()
-            tasks.remove(key)
-            if (value != null) {
-                tasks[oldKeys.joinToString (separator = " ")] = value
-            }
+            oldKeys[1] = getTime()
+            tasks.removeAt(key.toInt() - 1)
+            tempList.add(oldKeys.joinToString (separator = " "))
+            tempList.addAll(value)
+            tasks.add(tempList)
         }
         VALIDFIELDS.PRIORITY -> {
-            oldKeys[3] = getTaskPriority()
-            tasks.remove(key)
-            if (value != null) {
-                tasks[oldKeys.joinToString (separator = " ")] = value
-            }
+            oldKeys[2] = getTaskPriority()
+            tasks.removeAt(key.toInt() - 1)
+            tempList.add(oldKeys.joinToString (separator = " "))
+            tempList.addAll(value)
+            tasks.add(tempList)
         }
         else -> {
-            tasks.remove(key)
-            addTask(tasks, oldKeys[1], oldKeys[2], oldKeys[3])
+            tasks.removeAt(key.toInt() - 1)
+            addTask(tasks, oldKeys[0], oldKeys[1], oldKeys[2])
         }
     }
 }
 
-fun getKeys(keys: List<String>, number: String): String {
+fun validateIndex(keys: List<String>, number: String): String {
     val isDigit = number.toCharArray().all { it.isDigit() }
 
     if(!isDigit) {
         return "INVALID"
     }
 
-    if (number.toInt() >= keys.size) {
+    if (number.toInt() > keys.size || number.toInt() <= 0) {
         return "INVALID"
     }
 
-    return keys[number.toInt()]
+    return "VALID"
 }
 
 fun numOfSpaces(index: Int): String {
@@ -257,5 +262,3 @@ fun numOfSpaces(index: Int): String {
         "  "
     }
 }
-
-

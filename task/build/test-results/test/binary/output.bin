@@ -142,9 +142,9 @@
 1Input an action (add, print, edit, delete, end):
 > add
 &Input the task priority (C, H, N, L):
-> H
+> C
 Input the date (yyyy-mm-dd):
-> 2022-05-05
+> 2022-05-06
 Input the time (hh:mm):
 > 17:00
 .Input a new task (enter a blank line to end):
@@ -153,9 +153,9 @@
 1Input an action (add, print, edit, delete, end):
 > add
 &Input the task priority (C, H, N, L):
-> N
+> h
 Input the date (yyyy-mm-dd):
-> 2022-05-12
+> 2022-05-13
 Input the time (hh:mm):
 > 17:00
 .Input a new task (enter a blank line to end):
@@ -167,7 +167,7 @@
 &Input the task priority (C, H, N, L):
 > n
 Input the date (yyyy-mm-dd):
-> 2022-04-28
+> 2022-04-29
 Input the time (hh:mm):
 > 19:00
 .Input a new task (enter a blank line to end):
@@ -182,140 +182,205 @@
 &Input the task priority (C, H, N, L):
 > l
 Input the date (yyyy-mm-dd):
-> 2022-05-12
+> 2022-05-13
 Input the time (hh:mm):
 > 12:00
 .Input a new task (enter a blank line to end):
 > Buy book
 > 
 1Input an action (add, print, edit, delete, end):
+> print
+Q+----+------------+-------+---+---+--------------------------------------------+
+Q| N  |    Date    | Time  | P | D |                   Task                     |
+Q+----+------------+-------+---+---+--------------------------------------------+
+e| 1  | 2022-05-06 | 17:00 | [101m [0m | [103m [0m |See my dentist                              |
+Q+----+------------+-------+---+---+--------------------------------------------+
+e| 2  | 2022-05-13 | 17:00 | [103m [0m | [102m [0m |Cinema: get tickets                         |
+Q|    |            |       |   |   |Check movie reviews                         |
+Q+----+------------+-------+---+---+--------------------------------------------+
+e| 3  | 2022-04-29 | 19:00 | [102m [0m | [101m [0m |Supermarket                                 |
+Q|    |            |       |   |   |Chocolates                                  |
+Q|    |            |       |   |   |flour                                       |
+Q|    |            |       |   |   |oranges                                     |
+Q+----+------------+-------+---+---+--------------------------------------------+
+e| 4  | 2022-05-13 | 12:00 | [104m [0m | [102m [0m |Buy book                                    |
+Q+----+------------+-------+---+---+--------------------------------------------+
+1Input an action (add, print, edit, delete, end):
+> end
+Tasklist exiting!
+[1;31m
+Start test 8[0m
+1Input an action (add, print, edit, delete, end):
 > add
 &Input the task priority (C, H, N, L):
 > N
 Input the date (yyyy-mm-dd):
-> 2022-05-05
+> 2022-05-13
 Input the time (hh:mm):
-> 12:00
+> 17:00
 .Input a new task (enter a blank line to end):
-> Check new software
-> 
-1Input an action (add, print, edit, delete, end):
-> add
-&Input the task priority (C, H, N, L):
-> C
-Input the date (yyyy-mm-dd):
-> 2022-04-28
-Input the time (hh:mm):
-> 16:00
-.Input a new task (enter a blank line to end):
-> Fill car tank
-> 
-1Input an action (add, print, edit, delete, end):
-> add
-&Input the task priority (C, H, N, L):
-> c
-Input the date (yyyy-mm-dd):
-> 2022-05-12
-Input the time (hh:mm):
-> 18:15
-.Input a new task (enter a blank line to end):
-> Pay phone bill
+> Cinema: get tickets
 > 
 1Input an action (add, print, edit, delete, end):
 > add
 &Input the task priority (C, H, N, L):
 > l
 Input the date (yyyy-mm-dd):
-> 2022-05-12
+> 2022-04-29
 Input the time (hh:mm):
-> 18:15
+> 12:00
 .Input a new task (enter a blank line to end):
-> Pay water bill
+> Buy book
 > 
+1Input an action (add, print, edit, delete, end):
+	> delete
+Q+----+------------+-------+---+---+--------------------------------------------+
+Q| N  |    Date    | Time  | P | D |                   Task                     |
+Q+----+------------+-------+---+---+--------------------------------------------+
+e| 1  | 2022-05-13 | 17:00 | [102m [0m | [102m [0m |Cinema: get tickets                         |
+Q+----+------------+-------+---+---+--------------------------------------------+
+e| 2  | 2022-04-29 | 12:00 | [104m [0m | [101m [0m |Buy book                                    |
+Q+----+------------+-------+---+---+--------------------------------------------+
+Input the task number (1-2):
+> 1
+The task is deleted
+1Input an action (add, print, edit, delete, end):
+	> delete
+Q+----+------------+-------+---+---+--------------------------------------------+
+Q| N  |    Date    | Time  | P | D |                   Task                     |
+Q+----+------------+-------+---+---+--------------------------------------------+
+e| 1  | 2022-04-29 | 12:00 | [104m [0m | [101m [0m |Buy book                                    |
+Q+----+------------+-------+---+---+--------------------------------------------+
+Input the task number (1-1):
+> 1
+The task is deleted
+1Input an action (add, print, edit, delete, end):
+	> delete
+No tasks have been input
+1Input an action (add, print, edit, delete, end):
+> print
+No tasks have been input
+1Input an action (add, print, edit, delete, end):
+> end
+Tasklist exiting!
+[1;31m
+Start test 9[0m
 1Input an action (add, print, edit, delete, end):
 > add
 &Input the task priority (C, H, N, L):
-> L
+> N
 Input the date (yyyy-mm-dd):
-> 2022-04-28
+> 2000-1-1
 Input the time (hh:mm):
-> 08:05
+> 0:0
 .Input a new task (enter a blank line to end):
-> Buy flowers
+
+> My task
+> 
+1Input an action (add, print, edit, delete, end):
+> edit
+Q+----+------------+-------+---+---+--------------------------------------------+
+Q| N  |    Date    | Time  | P | D |                   Task                     |
+Q+----+------------+-------+---+---+--------------------------------------------+
+e| 1  | 2000-01-01 | 00:00 | [102m [0m | [101m [0m |My task                                     |
+Q+----+------------+-------+---+---+--------------------------------------------+
+Input the task number (1-1):
+> 1
+4Input a field to edit (priority, date, time, task):
+> priority
+&Input the task priority (C, H, N, L):
+> H
+The task is changed
+1Input an action (add, print, edit, delete, end):
+> edit
+Q+----+------------+-------+---+---+--------------------------------------------+
+Q| N  |    Date    | Time  | P | D |                   Task                     |
+Q+----+------------+-------+---+---+--------------------------------------------+
+e| 1  | 2000-01-01 | 00:00 | [103m [0m | [101m [0m |My task                                     |
+Q+----+------------+-------+---+---+--------------------------------------------+
+Input the task number (1-1):
+> 1
+4Input a field to edit (priority, date, time, task):
+> date
+Input the date (yyyy-mm-dd):
+> 2001-2-2
+The task is changed
+1Input an action (add, print, edit, delete, end):
+> edit
+Q+----+------------+-------+---+---+--------------------------------------------+
+Q| N  |    Date    | Time  | P | D |                   Task                     |
+Q+----+------------+-------+---+---+--------------------------------------------+
+e| 1  | 2001-02-02 | 00:00 | [103m [0m | [101m [0m |My task                                     |
+Q+----+------------+-------+---+---+--------------------------------------------+
+Input the task number (1-1):
+> 1
+4Input a field to edit (priority, date, time, task):
+> time
+Input the time (hh:mm):
+> 12:34
+The task is changed
+1Input an action (add, print, edit, delete, end):
+> edit
+Q+----+------------+-------+---+---+--------------------------------------------+
+Q| N  |    Date    | Time  | P | D |                   Task                     |
+Q+----+------------+-------+---+---+--------------------------------------------+
+e| 1  | 2001-02-02 | 12:34 | [103m [0m | [101m [0m |My task                                     |
+Q+----+------------+-------+---+---+--------------------------------------------+
+Input the task number (1-1):
+> 1
+4Input a field to edit (priority, date, time, task):
+> task
+.Input a new task (enter a blank line to end):
+> My new task
+> 
+The task is changed
+1Input an action (add, print, edit, delete, end):
+> print
+Q+----+------------+-------+---+---+--------------------------------------------+
+Q| N  |    Date    | Time  | P | D |                   Task                     |
+Q+----+------------+-------+---+---+--------------------------------------------+
+e| 1  | 2001-02-02 | 12:34 | [103m [0m | [101m [0m |My new task                                 |
+Q+----+------------+-------+---+---+--------------------------------------------+
+1Input an action (add, print, edit, delete, end):
+> end
+Tasklist exiting!
+[1;31m
+Start test 10[0m
+1Input an action (add, print, edit, delete, end):
+> add
+&Input the task priority (C, H, N, L):
+> C
+Input the date (yyyy-mm-dd):
+> 2000-1-1
+Input the time (hh:mm):
+> 17:00
+.Input a new task (enter a blank line to end):
+[> This is a long line, for a new task, demonstrating the 44 characters limit of each line.
 > 
 1Input an action (add, print, edit, delete, end):
 > add
 &Input the task priority (C, H, N, L):
 > C
 Input the date (yyyy-mm-dd):
-> 2022-05-05
+> 2000-1-1
 Input the time (hh:mm):
-> 12:00
+> 17:00
 .Input a new task (enter a blank line to end):
-> Fix printer
-> 
-1Input an action (add, print, edit, delete, end):
-> add
-&Input the task priority (C, H, N, L):
-> h
-Input the date (yyyy-mm-dd):
-> 2022-04-28
-Input the time (hh:mm):
-> 12:00
-.Input a new task (enter a blank line to end):
-> Change site
-> Use Christmas theme
-> 
-1Input an action (add, print, edit, delete, end):
-> add
-&Input the task priority (C, H, N, L):
-> l
-Input the date (yyyy-mm-dd):
-> 2022-05-12
-Input the time (hh:mm):
-> 12:00
-.Input a new task (enter a blank line to end):
-> Present for friend birthday
+M> These are two long lines, for a new task, each one more than 44 characters
+?> Used for demonstrating the 44 characters limit of each line.
 > 
 1Input an action (add, print, edit, delete, end):
 > print
-1  2022-05-05 17:00 H T
-   See my dentist
-
-2  2022-05-12 17:00 N I
-   Cinema: get tickets
-   Check movie reviews
-
-3  2022-04-28 19:00 N O
-   Supermarket
-   Chocolates
-	   flour
-   oranges
-
-4  2022-05-12 12:00 L I
-   Buy book
-   Present for friend birthday
-
-5  2022-05-05 12:00 N T
-   Check new software
-
-6  2022-04-28 16:00 C O
-   Fill car tank
-
-7  2022-05-12 18:15 C I
-   Pay phone bill
-
-8  2022-05-12 18:15 L I
-   Pay water bill
-
-9  2022-04-28 08:05 L O
-   Buy flowers
-
-10 2022-05-05 12:00 C T
-   Fix printer
-
-11 2022-04-28 12:00 H O
-   Change site
-   Use Christmas theme
-
+Q+----+------------+-------+---+---+--------------------------------------------+
+Q| N  |    Date    | Time  | P | D |                   Task                     |
+Q+----+------------+-------+---+---+--------------------------------------------+
+e| 1  | 2000-01-01 | 17:00 | [101m [0m | [101m [0m |This is a long line, for a new task, demonst|
+Q|    |            |       |   |   |rating the 44 characters limit of each line.|
+Q+----+------------+-------+---+---+--------------------------------------------+
+e| 2  | 2000-01-01 | 17:00 | [101m [0m | [101m [0m |These are two long lines, for a new task, ea|
+¡|    |            |       |   |   |ch one more than 44 characters              ||    |            |       |   |   |Used for demonstrating the 44 characters lim|
+Q|    |            |       |   |   |it of each line.                            |
+Q+----+------------+-------+---+---+--------------------------------------------+
 1Input an action (add, print, edit, delete, end):
+> end
+Tasklist exiting!

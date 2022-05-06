@@ -14,16 +14,16 @@ const val MAX_CHUNK_SIZE = 44
 val APRIORIST = listOf("C", "H", "N", "L")
 
 val PRIOCOLOR = mapOf(
-    "C" to "\\u001B[101m \\u001B[0m",
-    "H" to "\\u001B[103m \\u001B[0m",
-    "N" to "\\u0018[102m \\u001B[0m",
-    "L" to "\\u001B[104m \\u001B[0m"
+    "C" to "\u001B[101m \u001B[0m",
+    "H" to "\u001B[103m \u001B[0m",
+    "N" to "\u001B[102m \u001B[0m",
+    "L" to "\u001B[104m \u001B[0m"
 )
 
 val DUECOLOR = mapOf(
-    "O" to "\\u001B[101m \\u001B[0m",
-    "T" to "\\u001B[103m \\u001B[0m",
-    "I" to "\\u0018[102m \\u001B[0m"
+    "O" to "\u001B[101m \u001B[0m",
+    "T" to "\u001B[103m \u001B[0m",
+    "I" to "\u001B[102m \u001B[0m"
 )
 
 val EMPTYHEADER = """
@@ -36,7 +36,7 @@ val HEADER = """
 
 val HORIZONTAL = """
     +----+------------+-------+---+---+--------------------------------------------+""".trimIndent()
-val VERTICAL = """|"""
+const val VERTICAL = """|"""
 
 enum class VALIDFIELDS {
     PRIORITY,
@@ -139,18 +139,19 @@ fun printTaskList(tasks: MutableList<MutableList<String>>) {
         println("No tasks have been input")
     } else {
         println(HEADER)
+        var count = 0
         tasks.forEach{ taskList ->
-            var count = 0
             val dateTimePrioDue = taskList.first()
             val tempTaskList  = taskList - taskList.first()
-            println(getPrintedRow(number = ++count, dateTimePrioDue = dateTimePrioDue, tasks = tempTaskList))
+            val newTaskLine = getPrintedRow(number = ++count, dateTimePrioDue = dateTimePrioDue, tasks = tempTaskList)
+            println(newTaskLine)
         }
     }
 }
 
-fun getPrintedRow(number: Int, dateTimePrioDue: String, tasks: List<String>): String {
+fun getPrintedRow(number: Int, dateTimePrioDue: String, tasks: List<String>): StringBuilder {
     val (date, time, prio, due) = dateTimePrioDue.split(" ")
-    return "$VERTICAL $number${numOfSpaces(number)}$VERTICAL $date $VERTICAL $time $VERTICAL ${PRIOCOLOR[prio]} $VERTICAL ${DUECOLOR[due]} $VERTICAL${getAllTask(tasks)}"
+    return StringBuilder("$VERTICAL $number${numOfSpaces(number)}$VERTICAL $date $VERTICAL $time $VERTICAL ${PRIOCOLOR[prio]} $VERTICAL ${DUECOLOR[due]} $VERTICAL${getAllTask(tasks)}")
 }
 
 fun getAllTask(tasks: List<String>): StringBuilder {
@@ -161,11 +162,11 @@ fun getAllTask(tasks: List<String>): StringBuilder {
             // Multiline Task
             val chunkedTask = tasks[taskIndex].chunked(MAX_CHUNK_SIZE)
             taskStr.append(
-                "${chunkedTask.first()}$VERTICAL".trimIndent()
+                "${if (taskIndex > 0) "\n" + EMPTYHEADER else ""}${chunkedTask.first()}${" ".repeat(MAX_CHUNK_SIZE - chunkedTask.first().length)}$VERTICAL".trimIndent()
             )
             for (index in 1 until chunkedTask.size) {
                 taskStr.append(
-                    "\n$EMPTYHEADER${chunkedTask[index]}$VERTICAL")
+                    "\n$EMPTYHEADER${chunkedTask[index]}${" ".repeat(MAX_CHUNK_SIZE - chunkedTask[index].length)}$VERTICAL")
             }
         } else {
             if (taskIndex == 0) {

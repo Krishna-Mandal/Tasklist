@@ -9,7 +9,34 @@ const val END = "end"
 const val EDIT = "edit"
 const val DELETE = "delete"
 
+const val MAX_CHUNK_SIZE = 44
+
 val APRIORIST = listOf("C", "H", "N", "L")
+
+val PRIOCOLOR = mapOf(
+    "C" to "\\u001B[101m \\u001B[0m",
+    "H" to "\\u001B[103m \\u001B[0m",
+    "N" to "\\u0018[102m \\u001B[0m",
+    "L" to "\\u001B[104m \\u001B[0m"
+)
+
+val DUECOLOR = mapOf(
+    "O" to "\\u001B[101m \\u001B[0m",
+    "T" to "\\u001B[103m \\u001B[0m",
+    "I" to "\\u0018[102m \\u001B[0m"
+)
+
+val EMPTYHEADER = """
+    |    |            |       |   |   |""".trimIndent()
+
+val HEADER = """
+    +----+------------+-------+---+---+--------------------------------------------+
+    | N  |    Date    | Time  | P | D |                   Task                     |
+    +----+------------+-------+---+---+--------------------------------------------+""".trimIndent()
+
+val HORIZONTAL = """
+    +----+------------+-------+---+---+--------------------------------------------+""".trimIndent()
+val VERTICAL = """|"""
 
 enum class VALIDFIELDS {
     PRIORITY,
@@ -49,8 +76,8 @@ fun getDate(): String {
     do {
         println("Input the date (yyyy-mm-dd):")
         repeat = try {
-            val yearMonthDay = readln().split("-").map { it.toInt() }
-            date = LocalDate(yearMonthDay.first(), yearMonthDay[1], yearMonthDay.last())
+            val (year, month, day) = readln().split("-").map { it.toInt() }
+            date = LocalDate(year, month, day)
             false
         } catch (except: Exception) {
             println("The input date is invalid")
@@ -111,15 +138,48 @@ fun printTaskList(tasks: MutableList<MutableList<String>>) {
     if (tasks.isEmpty()) {
         println("No tasks have been input")
     } else {
-        var number = 0
+        println(HEADER)
         tasks.forEach{ taskList ->
-            println("${++number}${numOfSpaces(number)}${taskList.first()}")
-            for (index in 1 until taskList.size) {
-                println("   ${taskList[index]}")
-            }
-            println()
+            var count = 0
+            val dateTimePrioDue = taskList.first()
+            val tempTaskList  = taskList - taskList.first()
+            println(getPrintedRow(number = ++count, dateTimePrioDue = dateTimePrioDue, tasks = tempTaskList))
         }
     }
+}
+
+fun getPrintedRow(number: Int, dateTimePrioDue: String, tasks: List<String>): String {
+    val (date, time, prio, due) = dateTimePrioDue.split(" ")
+    return "$VERTICAL $number${numOfSpaces(number)}$VERTICAL $date $VERTICAL $time $VERTICAL ${PRIOCOLOR[prio]} $VERTICAL ${DUECOLOR[due]} $VERTICAL${getAllTask(tasks)}"
+}
+
+fun getAllTask(tasks: List<String>): StringBuilder {
+    val taskStr = StringBuilder()
+
+    for (taskIndex in tasks.indices) {
+        if (tasks[taskIndex].chunked(MAX_CHUNK_SIZE).size > 1) {
+            // Multiline Task
+            val chunkedTask = tasks[taskIndex].chunked(MAX_CHUNK_SIZE)
+            taskStr.append(
+                "${chunkedTask.first()}$VERTICAL".trimIndent()
+            )
+            for (index in 1 until chunkedTask.size) {
+                taskStr.append(
+                    "\n$EMPTYHEADER${chunkedTask[index]}$VERTICAL")
+            }
+        } else {
+            if (taskIndex == 0) {
+                taskStr.append(
+                    "${tasks.first()}${" ".repeat(MAX_CHUNK_SIZE - tasks.first().length)}$VERTICAL")
+            } else {
+                taskStr.append(
+                    "\n$EMPTYHEADER${tasks[taskIndex]}${" ".repeat(MAX_CHUNK_SIZE - tasks[taskIndex].length)}$VERTICAL")
+            }
+        }
+    }
+    taskStr.append("\n")
+    taskStr.append(HORIZONTAL)
+    return taskStr
 }
 
 fun addTask(tasks: MutableList<MutableList<String>>, date: String, time: String, prio: String) {
@@ -193,8 +253,8 @@ fun editTask(tasks: MutableList<MutableList<String>>) {
 }
 
 fun getDueTag(date: String): String {
-    val yrMnDay = date.split("-").map { it.toInt() }
-    val taskDate = LocalDate(yrMnDay.first(), yrMnDay[1], yrMnDay.last())
+    val (year, month, day) = date.split("-").map { it.toInt() }
+    val taskDate = LocalDate(year, month, day)
     val currentDate = Clock.System.now().toLocalDateTime(TimeZone.of("UTC+0")).date
     val numberOfDays = currentDate.daysUntil(taskDate)
 

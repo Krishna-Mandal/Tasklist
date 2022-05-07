@@ -71,7 +71,7 @@ data class Task(
 
 
 class TaskList {
-    val allTasks = mutableListOf<MutableList<String>>()
+    val allTasks = mutableListOf<Task>()
 
     private fun getTaskPriority(): String {
         var prio: String
@@ -152,18 +152,16 @@ class TaskList {
         } else {
             println(HEADER)
             var count = 0
-            allTasks.forEach{ taskList ->
-                val dateTimePrioDue = taskList.first()
-                val tempTaskList  = taskList - taskList.first()
-                val newTaskLine = getPrintedRow(number = ++count, dateTimePrioDue = dateTimePrioDue, tasks = tempTaskList)
+            allTasks.forEach{ task ->
+                val newTaskLine = getPrintedRow(number = ++count,task = task)
                 println(newTaskLine)
             }
         }
     }
 
-    private fun getPrintedRow(number: Int, dateTimePrioDue: String, tasks: List<String>): StringBuilder {
-        val (date, time, prio, due) = dateTimePrioDue.split(" ")
-        return StringBuilder("$VERTICAL $number${numOfSpaces(number)}$VERTICAL $date $VERTICAL $time $VERTICAL ${PRIOCOLOR[prio]} $VERTICAL ${DUECOLOR[due]} $VERTICAL${getAllTask(tasks)}")
+    private fun getPrintedRow(number: Int, task: Task): StringBuilder {
+        val (date, time, priority, due) = task
+        return StringBuilder("$VERTICAL $number${numOfSpaces(number)}$VERTICAL $date $VERTICAL $time $VERTICAL ${PRIOCOLOR[priority]} $VERTICAL ${DUECOLOR[due]} $VERTICAL${getAllTask(task.taskList)}")
     }
 
     private fun getAllTask(tasks: List<String>): StringBuilder {
@@ -197,22 +195,20 @@ class TaskList {
 
     private fun addTask(date: String, time: String, prio: String) {
         println("Input a new task (enter a blank line to end):")
-        val mapKey = "$date $time $prio ${getDueTag(date)}"
         val tempList = mutableListOf<String>()
-        tempList.add(mapKey)
         do {
             val input = readln()
             if (input.isNotBlank()) {
                 tempList.add(input.trim())
             } else {
-                if (tempList.size == 1) {
+                if (tempList.size == 0) {
                     println("The task is blank")
                 }
             }
         } while (input.isNotBlank())
 
-        if (tempList.size > 1) {
-            allTasks.add(tempList)
+        if (tempList.size > 0) {
+            allTasks.add(Task(date, time, prio, getDueTag(date), tempList))
         }
     }
 
@@ -225,7 +221,7 @@ class TaskList {
             do {
                 println("Input the task number (1-${allTasks.size}):")
                 val taskNumber = readln().trim()
-                val isValidKey = validateIndex(allTasks.map { it.first() }, taskNumber)
+                val isValidKey = validateIndex(taskNumber)
                 if(isValidKey == "INVALID") {
                     println("Invalid task number")
                 } else {
@@ -245,7 +241,7 @@ class TaskList {
             do {
                 println("Input the task number (1-${allTasks.size}):")
                 val taskNumber = readln().trim()
-                val isValidKey = validateIndex(allTasks.map { it.first() }, taskNumber)
+                val isValidKey = validateIndex(taskNumber)
 
                 if(isValidKey == "INVALID") {
                     println("Invalid task number")
@@ -279,49 +275,36 @@ class TaskList {
     }
 
     private fun editTaskByType(fieldType: VALIDFIELDS, key: String) {
-        val currentKeyAndValue = allTasks[key.toInt() - 1]
-        val oldKeys = currentKeyAndValue.first().split(" ").toMutableList()
-        val value: List<String> = currentKeyAndValue - currentKeyAndValue.first()
-        val tempList = mutableListOf<String>()
+        val theTask = allTasks[key.toInt() - 1]
+        val (date, time, priority, _, _) = theTask
+        mutableListOf<String>()
 
         when(fieldType) {
             VALIDFIELDS.DATE -> {
-                oldKeys[0] = getDate()
-                oldKeys[3] = getDueTag(oldKeys[0])
-                allTasks.removeAt(key.toInt() - 1)
-                tempList.add(oldKeys.joinToString (separator = " "))
-                tempList.addAll(value)
-                allTasks.add(tempList)
+                theTask.date = getDate()
+                theTask.durTag = getDueTag(date)
             }
             VALIDFIELDS.TIME -> {
-                oldKeys[1] = getTime()
-                allTasks.removeAt(key.toInt() - 1)
-                tempList.add(oldKeys.joinToString (separator = " "))
-                tempList.addAll(value)
-                allTasks.add(tempList)
+                theTask.time = getTime()
             }
             VALIDFIELDS.PRIORITY -> {
-                oldKeys[2] = getTaskPriority()
-                allTasks.removeAt(key.toInt() - 1)
-                tempList.add(oldKeys.joinToString (separator = " "))
-                tempList.addAll(value)
-                allTasks.add(tempList)
+                theTask.priority = getTaskPriority()
             }
             else -> {
                 allTasks.removeAt(key.toInt() - 1)
-                addTask(oldKeys[0], oldKeys[1], oldKeys[2])
+                addTask(date, time, priority)
             }
         }
     }
 
-    private fun validateIndex(keys: List<String>, number: String): String {
+    private fun validateIndex(number: String): String {
         val isDigit = number.toCharArray().all { it.isDigit() }
 
         if(!isDigit) {
             return "INVALID"
         }
 
-        if (number.toInt() > keys.size || number.toInt() <= 0) {
+        if (number.toInt() > allTasks.size || number.toInt() <= 0) {
             return "INVALID"
         }
 

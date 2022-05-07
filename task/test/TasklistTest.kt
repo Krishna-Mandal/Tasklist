@@ -1,13 +1,26 @@
+import com.google.gson.JsonElement
 import kotlinx.datetime.*
+import org.hyperskill.hstest.common.JsonUtils
+import org.hyperskill.hstest.common.JsonUtils.getJson
 import org.hyperskill.hstest.dynamic.DynamicTest
 import org.hyperskill.hstest.stage.StageTest
 import org.hyperskill.hstest.testcase.CheckResult
 import org.hyperskill.hstest.testing.TestedProgram
+import org.hyperskill.hstest.testing.expect.Expectation.expect
+import org.hyperskill.hstest.testing.expect.json.JsonChecker.*
+import java.io.File
 
 class TasklistTest : StageTest<Any>() {
     // Wrong task input
     @DynamicTest(order = 1)
-    fun tasklistTest14(): CheckResult {
+    fun tasklistTest28(): CheckResult {
+        try {
+            val jsonFile = File("tasklist.json")
+            if (jsonFile.exists()) jsonFile.delete()
+        } catch (e: Exception) {
+            return CheckResult(false, "An exception was thrown, while trying to delete a JSON file.")
+        }
+
         val inputStrings = listOf("input", "task", "",  "123", " ")
         val co = CheckOutput()
         if ( !co.start("Input an action (add, print, edit, delete, end):") )
@@ -29,7 +42,14 @@ class TasklistTest : StageTest<Any>() {
 
     // Wrong priority is input
     @DynamicTest(order = 2)
-    fun tasklistTest15(): CheckResult {
+    fun tasklistTest29(): CheckResult {
+        try {
+            val jsonFile = File("tasklist.json")
+            if (jsonFile.exists()) jsonFile.delete()
+        } catch (e: Exception) {
+            return CheckResult(false, "An exception was thrown, while trying to delete a JSON file.")
+        }
+
         val inputStrings = listOf("normal", "Critical", "low",  "high", " ")
         val co = CheckOutput()
         if ( !co.start("Input an action (add, print, edit, delete, end):") )
@@ -62,7 +82,14 @@ class TasklistTest : StageTest<Any>() {
 
     // Wrong date is input
     @DynamicTest(order = 3)
-    fun tasklistTest16(): CheckResult {
+    fun tasklistTest30(): CheckResult {
+        try {
+            val jsonFile = File("tasklist.json")
+            if (jsonFile.exists()) jsonFile.delete()
+        } catch (e: Exception) {
+            return CheckResult(false, "An exception was thrown, while trying to delete a JSON file.")
+        }
+
         val inputStrings = listOf("2021-2-29", "2021-13-1", "2021-12-32",  "thisDay", " ")
         val co = CheckOutput()
         if ( !co.start("Input an action (add, print, edit, delete, end):") )
@@ -97,7 +124,14 @@ class TasklistTest : StageTest<Any>() {
 
     // Wrong time is input
     @DynamicTest(order = 4)
-    fun tasklistTest17(): CheckResult {
+    fun tasklistTest31(): CheckResult {
+        try {
+            val jsonFile = File("tasklist.json")
+            if (jsonFile.exists()) jsonFile.delete()
+        } catch (e: Exception) {
+            return CheckResult(false, "An exception was thrown, while trying to delete a JSON file.")
+        }
+
         val inputStrings = listOf("24:00", "12:60", "12.12",  "thisTime", " ")
         val co = CheckOutput()
         if ( !co.start("Input an action (add, print, edit, delete, end):") )
@@ -132,7 +166,14 @@ class TasklistTest : StageTest<Any>() {
 
     // Blank task is input
     @DynamicTest(order = 5)
-    fun tasklistTest18(): CheckResult {
+    fun tasklistTest32(): CheckResult {
+        try {
+            val jsonFile = File("tasklist.json")
+            if (jsonFile.exists()) jsonFile.delete()
+        } catch (e: Exception) {
+            return CheckResult(false, "An exception was thrown, while trying to delete a JSON file.")
+        }
+
         val co = CheckOutput()
         if ( !co.start("Input an action (add, print, edit, delete, end):") )
             return CheckResult(false, "Your output should contain \"Input an action (add, print, edit, delete, end):\"")
@@ -160,7 +201,14 @@ class TasklistTest : StageTest<Any>() {
 
     // No tasks have been input
     @DynamicTest(order = 6)
-    fun tasklistTest19(): CheckResult {
+    fun tasklistTest33(): CheckResult {
+        try {
+            val jsonFile = File("tasklist.json")
+            if (jsonFile.exists()) jsonFile.delete()
+        } catch (e: Exception) {
+            return CheckResult(false, "An exception was thrown, while trying to delete a JSON file.")
+        }
+
         val inputStrings = listOf("print", "edit", "delete")
         val co = CheckOutput()
         if ( !co.start("Input an action (add, print, edit, delete, end):") )
@@ -184,7 +232,14 @@ class TasklistTest : StageTest<Any>() {
 
     // Normal task addition
     @DynamicTest(order = 7)
-    fun tasklistTest24(): CheckResult {
+    fun tasklistTest34(): CheckResult {
+        try {
+            val jsonFile = File("tasklist.json")
+            if (jsonFile.exists()) jsonFile.delete()
+        } catch (e: Exception) {
+            return CheckResult(false, "An exception was thrown, while trying to delete a JSON file.")
+        }
+
         val now = Clock.System.now()
         val currentDate = now.toLocalDateTime(TimeZone.of("UTC+2")).date
         val sameDay = currentDate.toString()
@@ -254,7 +309,14 @@ class TasklistTest : StageTest<Any>() {
 
     // Tasks deletion
     @DynamicTest(order = 8)
-    fun tasklistTest25(): CheckResult {
+    fun tasklistTest35(): CheckResult {
+        try {
+            val jsonFile = File("tasklist.json")
+            if (jsonFile.exists()) jsonFile.delete()
+        } catch (e: Exception) {
+            return CheckResult(false, "An exception was thrown, while trying to delete a JSON file.")
+        }
+
         val now = Clock.System.now()
         val currentDate = now.toLocalDateTime(TimeZone.of("UTC+2")).date
         val sameDay = currentDate.toString()
@@ -323,7 +385,7 @@ class TasklistTest : StageTest<Any>() {
                     "Your output should contain \"+----+------------+-------+---+---+--------------------------------------------+\"")
 
         if (!co.inputNext("Input the task number (1-1):"))
-            return CheckResult(false, "Your output should contain \"Input the task number (1-1):\"")
+            return CheckResult(false, "Your output should contain \"Input the task number (1-2):\"")
 
         if (!co.input("1", "The task is deleted"))
             return CheckResult(false, "Your output should contain \"The task is deleted\"")
@@ -351,7 +413,14 @@ class TasklistTest : StageTest<Any>() {
 
     // Task editing
     @DynamicTest(order = 9)
-    fun tasklistTest26(): CheckResult {
+    fun tasklistTest36(): CheckResult {
+        try {
+            val jsonFile = File("tasklist.json")
+            if (jsonFile.exists()) jsonFile.delete()
+        } catch (e: Exception) {
+            return CheckResult(false, "An exception was thrown, while trying to delete a JSON file.")
+        }
+
         val co = CheckOutput()
         if ( !co.start("Input an action (add, print, edit, delete, end):") )
             return CheckResult(false, "Your output should contain \"Input an action (add, print, edit, delete, end):\"")
@@ -431,7 +500,7 @@ class TasklistTest : StageTest<Any>() {
             return CheckResult(false, "Your output should contain \"Input a field to edit (priority, date, time, task):\"")
 
         if (!co.input("time", "Input the time (hh:mm):"))
-            return CheckResult(false, "Your output should contain \"Input the date (yyyy-mm-dd):\"")
+            return CheckResult(false, "Your output should contain \"Input the time (hh:mm):\"")
         if (!co.input("12:34", "The task is changed"))
             return CheckResult(false, "Your output should contain \"The task is changed\"")
         if (!co.inputNext("Input an action (add, print, edit, delete, end):"))
@@ -451,7 +520,7 @@ class TasklistTest : StageTest<Any>() {
         if (!co.inputNext("Input the task number (1-1):"))
             return CheckResult(false, "Your output should contain \"Input the task number (1-1):\"")
         if (!co.input("1", "Input a field to edit (priority, date, time, task):"))
-            return CheckResult(false, "Your output should contain \"Input a field to edit (priority, date, time, task):\"")
+            return CheckResult(false, "Your output should contain \"The task is deleted\nInput a field to edit (priority, date, time, task):\"")
 
         if (!co.input("task", "Input a new task (enter a blank line to end):"))
             return CheckResult(false, "Your output should contain \"Input a new task (enter a blank line to end):\"")
@@ -482,9 +551,16 @@ class TasklistTest : StageTest<Any>() {
         return CheckResult.correct()
     }
 
-    // Long lines
+    // Check JSON file saving
     @DynamicTest(order = 10)
-    fun tasklistTest27(): CheckResult {
+    fun tasklistTest37(): CheckResult {
+        try {
+            val jsonFile = File("tasklist.json")
+            if (jsonFile.exists()) jsonFile.delete()
+        } catch (e: Exception) {
+            return CheckResult(false, "An exception was thrown, while trying to delete a JSON file.")
+        }
+
         val now = Clock.System.now()
         val currentDate = now.toLocalDateTime(TimeZone.of("UTC+2")).date
         val sameDay = currentDate.toString()
@@ -492,18 +568,21 @@ class TasklistTest : StageTest<Any>() {
         val daysBefore = currentDate.minus(7, DateTimeUnit.DAY).toString()
 
         val inputStrings = arrayListOf(
-            arrayOf("C", "2000-1-1", "17:00", "This is a long line, for a new task, demonstrating the 44 characters limit of each line.\n\n"),
-            arrayOf("C", "2000-1-1", "17:00", "These are two long lines, for a new task, each one more than 44 characters\n" +
-                    "Used for demonstrating the 44 characters limit of each line.\n\n")
+            arrayOf("C", sameDay, "17:00", "See my dentist\n\n"),
+            arrayOf("h", daysAfter, "17:00", "Cinema: get tickets\nCheck movie reviews\n\n"),
+            arrayOf("n", daysBefore, "19:00", "Supermarket\nChocolates\nflour\noranges\n\n",),
+            arrayOf("l", daysAfter, "12:00", "Buy book\n\n")
         )
 
         val outputStrings = arrayListOf(
-            arrayOf("| 1  | 2000-01-01 | 17:00 | \u001B[101m \u001B[0m | \u001B[101m \u001B[0m |This is a long line, for a new task, demonst|",
-                "|    |            |       |   |   |rating the 44 characters limit of each line.|"),
-            arrayOf("| 2  | 2000-01-01 | 17:00 | \u001B[101m \u001B[0m | \u001B[101m \u001B[0m |These are two long lines, for a new task, ea|",
-                "|    |            |       |   |   |ch one more than 44 characters              |",
-                "|    |            |       |   |   |Used for demonstrating the 44 characters lim|",
-                "|    |            |       |   |   |it of each line.                            |")
+            arrayOf("| 1  | $sameDay | 17:00 | \u001B[101m \u001B[0m | \u001B[103m \u001B[0m |See my dentist                              |"),
+            arrayOf("| 2  | $daysAfter | 17:00 | \u001B[103m \u001B[0m | \u001B[102m \u001B[0m |Cinema: get tickets                         |",
+                "|    |            |       |   |   |Check movie reviews                         |"),
+            arrayOf("| 3  | $daysBefore | 19:00 | \u001B[102m \u001B[0m | \u001B[101m \u001B[0m |Supermarket                                 |",
+                "|    |            |       |   |   |Chocolates                                  |",
+                "|    |            |       |   |   |flour                                       |",
+                "|    |            |       |   |   |oranges                                     |"),
+            arrayOf("| 4  | $daysAfter | 12:00 | \u001B[104m \u001B[0m | \u001B[102m \u001B[0m |Buy book                                    |")
         )
 
         val co = CheckOutput()
@@ -546,6 +625,86 @@ class TasklistTest : StageTest<Any>() {
 
         if (!co.programIsFinished() )
             return CheckResult(false, "The application didn't exit.")
+
+        try {
+            val jsonFile = File("tasklist.json")
+            if (!jsonFile.exists())
+                return CheckResult(false, "The file tasklist.json hasn't been created, after the end action.")
+            val jsonText = jsonFile.readText()
+            if (jsonText.isBlank())
+                return CheckResult(false, "The file tasklist.json is blank.")
+            val t = JsonUtils.getType(getJson(jsonText))
+            if (t != "array")
+                return CheckResult(false, "Wrong JSON format. JSON string is not an array.")
+        } catch (e: Exception) {
+            return CheckResult(false, "An exception was thrown, while trying to check if a file exists.")
+        }
+
+        return CheckResult.correct()
+    }
+
+    // Check JSON file loading
+    @DynamicTest(order = 11)
+    fun tasklistTest38(): CheckResult {
+        try {
+            val jsonFile = File("tasklist.json")
+            if (!jsonFile.exists())
+                return CheckResult(false, "The file tasklist.json doesn't exist.")
+            val jsonText = jsonFile.readText()
+            if (jsonText.isBlank())
+                return CheckResult(false, "The file tasklist.json is blank.")
+            val t = JsonUtils.getType(getJson(jsonText))
+            if (t != "array")
+                return CheckResult(false, "Wrong JSON format. JSON string is not an array.")
+        } catch (e: Exception) {
+            return CheckResult(false, "An exception was thrown, while trying to check if a file exists.")
+        }
+
+        val now = Clock.System.now()
+        val currentDate = now.toLocalDateTime(TimeZone.of("UTC+2")).date
+        val sameDay = currentDate.toString()
+        val daysAfter = currentDate.plus(7, DateTimeUnit.DAY).toString()
+        val daysBefore = currentDate.minus(7, DateTimeUnit.DAY).toString()
+
+        val outputStrings = arrayListOf(
+            arrayOf("| 1  | $sameDay | 17:00 | \u001B[101m \u001B[0m | \u001B[103m \u001B[0m |See my dentist                              |"),
+            arrayOf("| 2  | $daysAfter | 17:00 | \u001B[103m \u001B[0m | \u001B[102m \u001B[0m |Cinema: get tickets                         |",
+                "|    |            |       |   |   |Check movie reviews                         |"),
+            arrayOf("| 3  | $daysBefore | 19:00 | \u001B[102m \u001B[0m | \u001B[101m \u001B[0m |Supermarket                                 |",
+                "|    |            |       |   |   |Chocolates                                  |",
+                "|    |            |       |   |   |flour                                       |",
+                "|    |            |       |   |   |oranges                                     |"),
+            arrayOf("| 4  | $daysAfter | 12:00 | \u001B[104m \u001B[0m | \u001B[102m \u001B[0m |Buy book                                    |")
+        )
+
+        val co = CheckOutput()
+        if ( !co.start("Input an action (add, print, edit, delete, end):") )
+            return CheckResult(false, "Your output should contain \"Input an action (add, print, edit, delete, end):\"")
+
+        co.getNextOutput("print")
+        if (!co.inputNext("+----+------------+-------+---+---+--------------------------------------------+",
+                "| N  |    Date    | Time  | P | D |                   Task                     |",
+                "+----+------------+-------+---+---+--------------------------------------------+"))
+            return CheckResult(false, "Your output header isn't correct\"")
+        for (s in outputStrings) {
+            if (!co.inputNext(*s)) {
+                val str = StringBuilder()
+                s.forEach { str.appendLine(it) }
+                return CheckResult(false, "Your output should contain \"${str.toString()}\"")
+            }
+            if (!co.inputNext("+----+------------+-------+---+---+--------------------------------------------+"))
+                return CheckResult(false, "Wrong dividing line." +
+                        "Your output should contain \"+----+------------+-------+---+---+--------------------------------------------+\"")
+        }
+        if (!co.inputNext("Input an action (add, print, edit, delete, end):"))
+            return CheckResult(false, "Your output should contain \"Input an action (add, print, edit, delete, end):\"")
+
+        if (!co.input("end", "Tasklist exiting!"))
+            return CheckResult(false, "Your output should contain \"Tasklist exiting!\"")
+
+        if (!co.programIsFinished() )
+            return CheckResult(false, "The application didn't exit.")
+
         return CheckResult.correct()
     }
 }

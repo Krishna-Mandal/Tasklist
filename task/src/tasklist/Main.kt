@@ -1,6 +1,10 @@
 package tasklist
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.datetime.*
+import java.io.File
 import kotlin.system.exitProcess
 
 const val ADD = "add"
@@ -10,6 +14,7 @@ const val EDIT = "edit"
 const val DELETE = "delete"
 
 const val MAX_CHUNK_SIZE = 44
+const val JSON_FILE = "tasklist.json"
 
 val APRIORIST = listOf("C", "H", "N", "L")
 
@@ -45,7 +50,7 @@ enum class VALIDFIELDS {
     TASK;
 
     companion object {
-        fun isValidEnum(value: String): Boolean {
+        fun isValidTask(value: String): Boolean {
             return try {
                 VALIDFIELDS.valueOf(value.uppercase())
                 true
@@ -58,7 +63,7 @@ enum class VALIDFIELDS {
 
 fun main() {
     val taskList = TaskList()
-    taskList.perFormTask()
+    taskList.performTask()
 }
 
 data class Task(
@@ -71,7 +76,38 @@ data class Task(
 
 
 class TaskList {
-    val allTasks = mutableListOf<Task>()
+    private val allTasks = mutableListOf<Task>()
+
+    private fun uploadToJson() {
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+
+        val type = Types.newParameterizedType(List::class.java, Task::class.java)
+        val humanListAdapter = moshi.adapter<List<Task?>>(type)
+        val myFile = File(JSON_FILE)
+        myFile.writeText(humanListAdapter.toJson(allTasks))
+    }
+
+    private fun downLoadFromJson() {
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+
+        val type = Types.newParameterizedType(List::class.java, Task::class.java)
+        val humanListAdapter = moshi.adapter<List<Task?>>(type)
+        val myFile = File(JSON_FILE)
+        val readTasks = humanListAdapter.fromJson(myFile.readText())
+
+
+        if (!readTasks.isNullOrEmpty()) {
+            readTasks.filter { !it!!.taskList.isNullOrEmpty() }.forEach{
+                if (it != null) {
+                    allTasks.add(it)
+                }
+            }
+        }
+    }
 
     private fun getTaskPriority(): String {
         var prio: String
@@ -120,12 +156,18 @@ class TaskList {
         return time.toString().split("T").last()
     }
 
-    fun perFormTask() {
+    fun performTask() {
+        try {
+            downLoadFromJson()
+        } catch (except: Exception) {
+            //println(except.message)
+        }
         while (true) {
             println("Input an action (add, print, edit, delete, end):")
             validateUserInput(readln().trim())
         }
     }
+
 
     private fun validateUserInput(command: String) {
         when(command) {
@@ -138,6 +180,12 @@ class TaskList {
             PRINT -> printTaskList()
             END -> {
                 println("Tasklist exiting!")
+                try {
+                    uploadToJson()
+                } catch (except: Exception) {
+                    //println(except.message)
+                }
+
                 exitProcess(0)
             }
             EDIT -> editTask()
@@ -249,13 +297,13 @@ class TaskList {
                     do {
                         println("Input a field to edit (priority, date, time, task):")
                         val field = readln().uppercase()
-                        if (!VALIDFIELDS.isValidEnum(field)) {
+                        if (!VALIDFIELDS.isValidTask(field)) {
                             println("Invalid field")
                         } else {
                             editTaskByType(VALIDFIELDS.valueOf(field), taskNumber)
                             println("The task is changed")
                         }
-                    } while (!VALIDFIELDS.isValidEnum(field))
+                    } while (!VALIDFIELDS.isValidTask(field))
                 }
             } while (isValidKey == "INVALID")
         }
